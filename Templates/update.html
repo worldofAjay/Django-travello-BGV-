@@ -1,0 +1,199 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Update</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+
+    <!-- Bootstrap CSS File -->
+    <link href="{%static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <link
+    rel="stylesheet"
+    href="{%static 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css' %}"/>
+
+    <!-- Main Stylesheet File -->
+    <link href="{%static 'css/style.css' %}" rel="stylesheet">
+</head>
+<body>
+  <br>
+  <br>
+
+  <section id="update">
+  <div class="container">
+
+    <div class="jumbotron">
+      <h1 class="display-6 h1"><b>BGV - Status Update</b></h1>
+    </div>
+
+
+    <form action='update' method='POST'>
+      {% csrf_token %}
+      
+      <div class="form-group">
+        <label for="cid">CID</label>
+        <input type="text" class="form-control" id="cid" name="CID" placeholder="Enter the CID">
+      </div>
+
+      
+      <div class="row">
+        <div class="col">
+          <label for="res_name">Resource Name</label>
+          <input type="text" class="form-control" id="res_name" name="Resourcename" placeholder="Resource Name">
+        </div>
+        <div class="col">
+          <label for="grvm">GRVM</label>
+          <input type="text" class="form-control" id="grvm" name="GRVM" placeholder="GRVM">
+        </div>
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" name="Location" for="inputGroupSelect01">Location</label>
+        </div>
+        <select class="custom-select" id="inputGroupSelect01">
+          <option selected>Choose...</option>
+          <option value="Chennai">Chennai</option>
+          <option value="Bangalore">Bangalore</option>
+          <option value="Hyderabad">Hyderabad</option>
+        </select>
+      </div>
+   
+
+      <div class="row">
+        <div class="col">
+          <label for="tmt">TMT Request Number</label>
+          <input type="number" class="form-control" id="tmt" name="TMTRequest" placeholder="TMT Request Number">
+        </div>
+        <div class="col">
+          <label for="bgc">BGC Request Number</label>
+          <input type="number" class="form-control" id="bgc" name="BGCRequest" placeholder="BGC Request Number">
+        </div>
+      </div>
+
+      <br>
+
+
+      <div class="form-group">
+        <label for="int_date">BGC Initiation Date</label>
+        <input type="date" class="form-control" id="int_date" name="BGCInitiationDate" placeholder="BGC Initiation Date">
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="Status">BGC Status</label>
+        </div>
+        <select class="custom-select" name="BGCStatus" id="Status">
+          <option selected>Choose...</option>
+          <option value="Complete">Complete</option>
+          <option value="InProgress">In Progress</option>
+          <option value="NotStarted">Not Started</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="eta">ETA For Closure</label>
+        <input type="date" class="form-control" id="eta" name="ETAClosure" placeholder="ETA For Closure">
+      </div>
+
+      <div class="form-group">
+        <label for="pending">Pending Components</label>
+        <input type="text" class="form-control" id="pending" name="PendingComponents" placeholder="Pending Components">
+      </div>
+
+      <div class="form-group">
+        <label for="actual">Actual BGC Closure Date</label>
+        <input type="date" class="form-control" id="actual" name="ActualBGCClosureDate" placeholder="Actual BGC Closure Date">
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="onboard">Onboard Status</label>
+        </div>
+        <select class="custom-select" name="OnboardStatus" id="onboard">
+          <option selected>Choose...</option>
+          <option value="Complete">Complete</option>
+          <option value="InProgress">In Progress</option>
+          <option value="NotStarted">Not Started</option>
+        </select>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <label for="contact">Contact Number</label>
+          <input type="number" class="form-control" id="contact" name="ContactNumber" placeholder="Contact Number">
+        </div>
+        <div class="col">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" name="Email" placeholder="Email">
+        </div>
+      </div>
+
+      <br>
+
+      <div class="form-group">
+        <label for="resource">Resource Available On</label>
+        <input type="date" class="form-control" id="resource" name="ResourceAvailableon" placeholder="Resource Available On">
+      </div>
+
+      <div class="form-group">
+        <label for="comments">Comments</label>
+        <input type="text" class="form-control" id="comments" name="Comments" placeholder="Enter your Comments">
+      </div>
+
+
+      <div class="form-group">
+        <label for="doc">Document Review Comments</label>
+        <textarea class="form-control" id="doc" rows="2" name="Documentreviewcomments" placeholder="Enter your Document Comments here"></textarea>
+      </div>
+
+      <br>
+
+      <input type="submit">  
+    </form>
+    
+  </div>
+</div>
+</section>
+
+<br>
+<hr>
+<br>
+ 
+  <section id="view">
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1 class="display-6"><b>BGV - View Detail</b></h1>
+      </div>
+
+      
+      <form action='login' method='post'>
+        {% csrf_token %}
+        <div class="input-group mb-3 w-75 p-3 ">
+          <input type="text" class="form-control" placeholder="Enter the CID" aria-label="CID" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">Find</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      <br>
+      
+      
+    </div>
+    </section>
+
+</body>
+</html>
